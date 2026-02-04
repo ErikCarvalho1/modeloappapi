@@ -12,7 +12,7 @@ import { Vendas } from 'src/app/services/vendas';
 })
 export class UsuarioAddPage implements OnInit {
   form!:FormGroup;
-  niveis: any;
+  niveis: any[]=[];
 
 
   constructor(
@@ -29,6 +29,8 @@ export class UsuarioAddPage implements OnInit {
       senha: ['', Validators.required],
       id_nivel: ['', Validators.required]
     });
+    // Carregar niveis
+    this.listarNiveis();
   }
   salvar(){
     const request = {
@@ -48,5 +50,14 @@ async mensagem(msg: string){
     duration: 2000
   });
   t.present();
+}
+listarNiveis(){
+  this.api.operacao({
+    requisicao: 'nivel-listar'
+  }).subscribe((res:any) => {
+    if(res.success){
+      this.niveis = res.data;
+    }
+  })
 }
 }
