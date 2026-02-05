@@ -10,16 +10,27 @@ export class Auth {
     }
 
     login(email:string, senha: string){
-      return this.api.operacao({}).subscribe(()=>{})
+      return this.api.operacao({
+        requisicao: 'login',
+        email: email,
+        senha: senha
+      })
     }
 
-    logout(){}
+    logout(){
+      localStorage.removeItem('usuario');
 
-    setUsuairo(){}
+    }
+
+    setUsuario(dados:any){
+      localStorage.setItem('usuairo', JSON.stringify(dados));
+    }
     
-    getUsuario(){}
+    getUsuario(){
+      return JSON.parse(localStorage.getItem('usuario') || 'null')
+    }
 
     isLogado():boolean{
-      return true;
+      return !!this.getUsuario();
     }
   }

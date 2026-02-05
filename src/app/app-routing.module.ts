@@ -1,28 +1,39 @@
+import { LoginPageModule } from './peges/login/login.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Auth } from './services/auth';
+import { AuthGuard } from './guards/auth-guard';
 
 const routes: Routes = [
   {
     path: 'home',
+        canActivate: [AuthGuard],
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
     path: 'usuario-add',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/usuarios/usuario-add/usuario-add.module').then( m => m.UsuarioAddPageModule)
   },
   {
     path: 'usuario-list',
+        canActivate: [AuthGuard],
     loadChildren: () => import('./pages/usuarios/usuario-list/usuario-list.module').then( m => m.UsuarioListPageModule)
   },
   {
     path: 'usuario-edit/:id',
+        canActivate: [AuthGuard],
     loadChildren: () => import('./pages/usuarios/usuario-edit/usuario-edit.module').then( m => m.UsuarioEditPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  }
 
 ];
 
