@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastController } from '@ionic/angular';
-import { IonHeader, IonToolbar, IonTitle } from "@ionic/angular/standalone";
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ToastController, IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonButton, IonSelect, IonSelectOption } from "@ionic/angular/standalone";
 import { Vendas } from 'src/app/services/vendas';
+
 
 @Component({
   selector: 'app-cliente-add',
   templateUrl: './cliente-add.page.html',
   styleUrls: ['./cliente-add.page.scss'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, IonButton, IonInput, IonLabel, IonItem, IonContent, IonHeader, IonToolbar, IonTitle, IonicModule, IonSelect, IonSelectOption],
 })
 export class ClienteAddPage implements OnInit {
    form!:FormGroup;
@@ -28,7 +32,7 @@ export class ClienteAddPage implements OnInit {
   }
    salvar(){
     const request = {
-      requisicao: 'usuario-add', 
+      requisicao: 'cliente-add', 
       ...this.form.value
     };
     this.api.operacao(request).subscribe((res:any)  => {
