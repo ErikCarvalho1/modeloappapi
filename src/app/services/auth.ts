@@ -23,7 +23,7 @@ export class Auth {
     }
 
     setUsuario(dados:any){
-      localStorage.setItem('usuairo', JSON.stringify(dados));
+      localStorage.setItem('usuario', JSON.stringify(dados));
     }
     
     getUsuario(){

@@ -53,13 +53,13 @@ form!: FormGroup;
     const {usuario, senha} = this.form.value;
 
     this.auth.login(usuario,senha).subscribe((res:any)=>{
-
+       
       if(res.success){
-
+         
         this.auth.setUsuario(res.result);
 
         this.router.navigateByUrl('/home',{replaceUrl:true})
-
+          console.log(res.result)
       } else{
 
         this.mensagem(res.msg || 'Falha no login');

@@ -1,4 +1,4 @@
-import { LoginPageModule } from './peges/login/login.module';
+import { LoginPageModule } from './pages/login/login.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Auth } from './services/auth';
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'splash',
     pathMatch: 'full'
   },
   {
@@ -32,8 +32,19 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./peges/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
+  },
+  
+  {
+    path: 'cliente-add',
+    loadChildren: () => import('./pages/cliente-add/cliente-add.module').then( m => m.ClienteAddPageModule)
   }
+
+
 
 ];
 
