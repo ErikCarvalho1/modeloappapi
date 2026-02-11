@@ -18,7 +18,6 @@ import { ClienteAddPage } from './cliente-add.page';
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
-  
     IonicModule
 
   ]

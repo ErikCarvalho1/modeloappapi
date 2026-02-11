@@ -42,7 +42,19 @@ const routes: Routes = [
   {
     path: 'cliente-add',
     loadChildren: () => import('./pages/cliente-add/cliente-add.module').then( m => m.ClienteAddPageModule)
+  },
+  {
+    
+    path: 'produto-list',
+     canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/produto/produto-list/produto-list.module').then( m => m.ProdutoListPageModule)
+  },
+  {
+    path: 'produto-detalhe/:id',
+     canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/produto/produto-detalhe/produto-detalhe.module').then( m => m.ProdutoDetalhePageModule)
   }
+
 
 
 

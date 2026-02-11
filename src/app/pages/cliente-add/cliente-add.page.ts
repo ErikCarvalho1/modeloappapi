@@ -11,14 +11,14 @@ import { Vendas } from 'src/app/services/vendas';
   templateUrl: './cliente-add.page.html',
   styleUrls: ['./cliente-add.page.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, IonButton, IonInput, IonLabel, IonItem, IonContent, IonHeader, IonToolbar, IonTitle, IonicModule, IonSelect, IonSelectOption],
+  imports: [CommonModule, ReactiveFormsModule, IonButton, IonInput, IonLabel, IonItem, IonContent, IonHeader, IonToolbar, IonTitle, IonicModule],
 })
 export class ClienteAddPage implements OnInit {
    form!:FormGroup;
 
   constructor( private fb: FormBuilder,
     private api: Vendas,
-    private toast: ToastController) { }
+    private toast: ToastController) { } 
 
   ngOnInit() {
        this.form = this.fb.group({
