@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonHeader, IonToolbar } from "@ionic/angular/standalone";
+import { IonHeader, IonToolbar, IonContent  } from "@ionic/angular/standalone";
 import { Vendas } from 'src/app/services/vendas';
 
 @Component({
@@ -10,6 +10,9 @@ import { Vendas } from 'src/app/services/vendas';
   standalone: false,
 })
 export class ProdutoListPage implements OnInit {
+onClick() {
+throw new Error('Method not implemented.');
+}
 
   produtos: any[] = [];
 
