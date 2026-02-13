@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Vendas } from 'src/app/services/vendas';
@@ -27,7 +27,24 @@ produto:any[]=[];
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.form = this.fb.group({
+      descricao:['',Validators.required],
+      valor_unit:[0,Validators.required],
+      unidade_venda:[''],
+      categoria_id:[0],
+      estoque_minimo:[0],
+      classe_desconto:[0],
+      image:[''],
+      cod_barras:[''],
+      quantidade:[0],
+      data_ultimo_movimento:['']
+      
+
+
+    });
+    
     this.listaCategorias();
+
     this.buscaProduto(this.id);
   }
 
@@ -42,6 +59,7 @@ produto:any[]=[];
         this.api.operacao({requisicao:'produto-listar', id:this.id}).subscribe((res:any)=>{
       if(res.success){
         this.produto = res.data;
+        
       }
       console.log(this.produto);
     });
